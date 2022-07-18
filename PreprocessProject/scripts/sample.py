@@ -29,14 +29,19 @@ def enter_dates_in_lists(num_data):
 
 def difference_in_second(Date):
     CurrentDate = datetime.datetime.now()
-    return (Date-CurrentDate).seconds
+    return (Date-CurrentDate).total_seconds()
 
 def reminder(date_time_list):
     i=0
     while(i<len(date_time_list)):
         sleep_time = difference_in_second(date_time_list[i])
-        time.sleep(sleep_time)
-        print('The first date has been reached! []'.format(date_time_list[i]))
+        if sleep_time>0:
+            time.sleep(sleep_time)
+            print('The {} date has been reached! {}'.format(i+1,date_time_list[i]))
+        else:
+            print('This date is from the past')
+        i = i + 1 
+            
 
 
 def main():

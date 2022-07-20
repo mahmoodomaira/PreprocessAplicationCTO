@@ -5,12 +5,12 @@ Created on Sun Jul 17 18:51:21 2022
 @author: E6410
 """
 
-import datetime
+from datetime import datetime
 import time
 
 def enter_dates_in_lists(num_data):
     date_time_list = []
-    regex = datetime.datetime.strptime
+    regex = datetime.strptime
     format_date_time = "%d.%m.%Y %H:%M"
     while(len(date_time_list)<num_data):
         try:
@@ -19,7 +19,7 @@ def enter_dates_in_lists(num_data):
             entered_time = input('please enter a time: ')
             assert regex(entered_time, '%H:%M')
             date_time_str = entered_date + " " + entered_time
-            date_time_list.append(datetime.datetime.strptime(date_time_str,format_date_time))
+            date_time_list.append(datetime.strptime(date_time_str,format_date_time))
         except ValueError:
             print('Please enter the date in the form "dd.mm.yyyy" and Please enter the time in the form "HH:MM"')
             
@@ -28,7 +28,7 @@ def enter_dates_in_lists(num_data):
     return date_time_list
 
 def difference_in_second(Date):
-    CurrentDate = datetime.datetime.now()
+    CurrentDate = datetime.now()
     return (Date-CurrentDate).total_seconds()
 
 def reminder(date_time_list):
